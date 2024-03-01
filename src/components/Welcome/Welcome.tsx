@@ -1,23 +1,35 @@
-import { Title, Text, Anchor } from '@mantine/core';
+import { Text, Flex, Group } from '@mantine/core';
 import classes from './Welcome.module.css';
+
+const skills = ['React', 'Typescript', 'Javascript', 'Python', 'C++', 'Vue'];
 
 export function Welcome() {
   return (
-    <>
-      <Title className={classes.title} ta="center" mt={100}>
-        Welcome to{' '}
-        <Text inherit variant="gradient" component="span" gradient={{ from: 'pink', to: 'yellow' }}>
-          Mantine
-        </Text>
-      </Title>
-      <Text c="dimmed" ta="center" size="lg" maw={580} mx="auto" mt="xl">
-        This starter Vite project includes a minimal setup, if you want to learn more on Mantine +
-        Vite integration follow{' '}
-        <Anchor href="https://mantine.dev/guides/vite/" size="lg">
-          this guide
-        </Anchor>
-        . To get started edit pages/Home.page.tsx file.
+    <Flex direction="column" className={classes.div}>
+      <Flex gap="3rem">
+        <div title="Daniel " className={classes['glitched-title']}>
+          Daniel
+        </div>
+        <div title="García" className={classes['glitched-title']}>
+          García
+        </div>
+        <div title="Hernández" className={classes['glitched-title']}>
+          Hernández
+        </div>
+      </Flex>
+      <Text size="md" fw="400">
+        Software Engineer
       </Text>
-    </>
+      <Group gap="xs">
+        {skills.map((skill, index) => (
+          <>
+            <Text size="sm" td="underline">
+              {skill}
+            </Text>
+            <Text size="sm">{index < skills.length - 1 && '+'}</Text>
+          </>
+        ))}
+      </Group>
+    </Flex>
   );
 }
