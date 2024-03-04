@@ -10,7 +10,6 @@ import {
   Avatar,
   useMantineColorScheme,
   ActionIcon,
-  Modal,
   Flex,
   Image,
 } from '@mantine/core';
