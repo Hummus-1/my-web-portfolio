@@ -22,13 +22,13 @@ import { PrimaryColorContext } from '@/PrimaryColorContext';
 import { ContactModal } from '../ContactModal/ContactModal';
 
 const colorSchemeIconSources: { [key in 'light' | 'dark' | 'auto']?: any } = {
-  light: './src/public/images/black-moon.png',
-  dark: './src/public/images/white-sun.png',
+  light: '/static/images/black-moon.png',
+  dark: '/static/images/white-sun.png',
 };
 
 const mouseDownIconSources: { [key in 'light' | 'dark' | 'auto']?: any } = {
-  light: './src/public/images/mouse-cursor-black.png',
-  dark: './src/public/images/mouse-cursor-white.png',
+  light: '/static/images/mouse-cursor-black.png',
+  dark: '/static/images/mouse-cursor-white.png',
 };
 
 export type PageTemplateProps = {

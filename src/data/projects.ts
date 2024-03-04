@@ -39,6 +39,6 @@ export const projects: Array<Project> = [
     name: 'Explosive Kawaii Slimes Bubble Shouter',
     companyName: 'Ownership',
     description: 'Unity VR project that uses your voice to shoot slime-killing bubbles',
-    coverImagePath: './src/public/images/slime.png',
+    coverImagePath: '/static/images/slime.png',
   },
 ];

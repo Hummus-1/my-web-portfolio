@@ -7,7 +7,7 @@ export function PhotographyPage() {
       heightLimit={1020}
       blackMode
       primaryColor="snakeGreen"
-      imageRoute="./src/public/images/snake.webp"
+      imageRoute="/static/images/snake.webp"
       titleSection={
         <div
           title="Photography"

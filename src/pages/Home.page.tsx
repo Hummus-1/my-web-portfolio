@@ -9,7 +9,7 @@ export function HomePage() {
     <PageTemplate
       // ! Problems with height limit
       heightLimit={1200}
-      imageRoute="./src/public/images/corv.jpeg"
+      imageRoute="/static/images/corv.jpeg"
       imageMaximumWidth="1800px"
       titleSection={
         <>
