@@ -1,0 +1,8 @@
+body {
+  height: 100dvh;
+  overflow-x: hidden;
+}
+
+body:has(.noContent) {
+  overflow-y: hidden;
+}

@@ -1,17 +1,41 @@
-import { MantineColorsTuple, createTheme } from '@mantine/core';
+import { CSSVariablesResolver, MantineColorsTuple, createTheme } from '@mantine/core';
 
-const violet: MantineColorsTuple = [
-  '#f4efff',
-  '#e3dcf5',
-  '#c4b5e6',
-  '#a38cd7',
-  '#8769ca',
-  '#7553c2',
-  '#6d47c0',
-  '#5c39a9',
-  '#513298',
-  '#452a87',
+const highViolet: MantineColorsTuple = [
+  '#f2ebff',
+  '#ded3fd',
+  '#bba3f7',
+  '#9571f2',
+  '#7546ed',
+  '#612beb',
+  '#561deb',
+  '#4712d1',
+  '#3e0ebc',
+  '#3309a6',
 ];
+
+const snakeGreen: MantineColorsTuple = [
+  '#f8feec',
+  '#effbd8',
+  '#ddf8a9',
+  '#cbf478',
+  '#bbf151',
+  '#b0ef3a',
+  '#abee2f',
+  '#96d324',
+  '#83bb1b',
+  '#6fa20b',
+];
+
+export type PrimaryColors = 'highViolet' | 'snakeGreen';
+export const resolver: CSSVariablesResolver = () => ({
+  variables: {},
+  light: {
+    '--mantine-color-text': '#000000',
+  },
+  dark: {
+    '--mantine-color-text': '#FFFFFF',
+  },
+});
 
 export const theme = createTheme({
   fontFamily: 'Roboto Mono',
@@ -20,6 +44,7 @@ export const theme = createTheme({
   },
   primaryColor: 'highViolet',
   colors: {
-    highViolet: violet,
+    highViolet,
+    snakeGreen,
   },
 });
