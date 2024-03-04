@@ -6,7 +6,7 @@ export function ProjectsPage() {
   return (
     <PageTemplate
       heightLimit={850}
-      imageRoute="./src/assets/images/sheeps3.webp"
+      imageRoute="./src/public/images/sheeps3.webp"
       titleSection={
         <div title="Projects" className={classes['glitched-title']}>
           Projects
