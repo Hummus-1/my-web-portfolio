@@ -1,5 +1,6 @@
 import {
   Anchor,
+  Badge,
   Card,
   Flex,
   Image,
@@ -31,12 +32,23 @@ export const ProjectSlider = () => {
             </Card.Section>
 
             <Stack align="center" mt="md" mb="xs" gap="4px">
-              {project.name.map((name) => (
-                <Text size="sm" fw={500} className={classes.projectTitle}>
-                  {name}
-                </Text>
-              ))}
-              {/* {project.currentlyWorking && <Badge color="green">Current</Badge>} */}
+              {project.name.map((name) =>
+                project.projectWebsite ? (
+                  <Anchor
+                    size="sm"
+                    fw={500}
+                    className={classes.projectTitle}
+                    href={project.projectWebsite}
+                    c={colorScheme === 'light' ? 'black' : 'white'}
+                  >
+                    {name}
+                  </Anchor>
+                ) : (
+                  <Text size="sm" fw={500} className={classes.projectTitle}>
+                    {name}
+                  </Text>
+                )
+              )}
               <Anchor
                 size="xs"
                 c={colorScheme === 'light' ? 'black' : 'white'}
@@ -47,9 +59,14 @@ export const ProjectSlider = () => {
               </Anchor>
             </Stack>
 
-            <Text size="sm" ta="center">
+            <Text size="sm" ta="center" mb="xs">
               {project.description}
             </Text>
+            {project.currentlyWorking && (
+              <Stack align="center">
+                <Badge>Currently working</Badge>
+              </Stack>
+            )}
           </Card>
         ))}
       </SimpleGrid>
