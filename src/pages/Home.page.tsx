@@ -2,25 +2,25 @@ import { Flex, Group, Text } from '@mantine/core';
 import { PageTemplate } from '@/components/PageTemplate/PageTemplate';
 import classes from '../components/PageTemplate/PageTemplate.module.css';
 
-const skills = ['React', 'Typescript', 'Javascript', 'Python', 'C++', 'Vue'];
+const skills = ['React', 'Typescript', 'Javascript', 'Python', 'C++', 'Vue', 'Data Science'];
 
 export function HomePage() {
   return (
     <PageTemplate
-      // ! Problems with height limit
-      heightLimit={1200}
+      effectiveImageHeighPercentage={0.77}
+      darkModeImageBrightness={150}
       imageRoute="/static/images/corv.jpeg"
       imageMaximumWidth="1800px"
       titleSection={
         <>
           <Flex gap="3rem">
-            <div title="Daniel " className={classes['glitched-title']}>
+            <div data-glitch="Daniel " className={classes['glitched-title']}>
               Daniel
             </div>
-            <div title="García" className={classes['glitched-title']}>
+            <div data-glitch="García" className={classes['glitched-title']}>
               García
             </div>
-            <div title="Hernández" className={classes['glitched-title']}>
+            <div data-glitch="Hernández" className={classes['glitched-title']}>
               Hernández
             </div>
           </Flex>

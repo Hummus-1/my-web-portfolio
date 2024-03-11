@@ -26,7 +26,20 @@ const snakeGreen: MantineColorsTuple = [
   '#6fa20b',
 ];
 
-export type PrimaryColors = 'highViolet' | 'snakeGreen';
+const sheepBrown: MantineColorsTuple = [
+  '#f8f5f1',
+  '#ebe8e4',
+  '#d8cdc4',
+  '#c5b1a1',
+  '#b69a82',
+  '#ac8b6e',
+  '#a88363',
+  '#937053',
+  '#836347',
+  '#74553a',
+];
+
+export type PrimaryColors = 'highViolet' | 'snakeGreen' | 'sheepBrown';
 export const resolver: CSSVariablesResolver = () => ({
   variables: {},
   light: {
@@ -46,5 +59,6 @@ export const theme = createTheme({
   colors: {
     highViolet,
     snakeGreen,
+    sheepBrown,
   },
 });

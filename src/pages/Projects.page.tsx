@@ -5,10 +5,12 @@ import classes from '../components/PageTemplate/PageTemplate.module.css';
 export function ProjectsPage() {
   return (
     <PageTemplate
-      heightLimit={850}
-      imageRoute="/static/images/sheeps3.webp"
+      effectiveImageHeighPercentage={0.4}
+      darkModeImageBrightness={125}
+      primaryColor="sheepBrown"
+      imageRoute="/static/images/sheeps.webp"
       titleSection={
-        <div title="Projects" className={classes['glitched-title']}>
+        <div data-glitch="Projects" className={classes['glitched-title']}>
           Projects
         </div>
       }

@@ -31,9 +31,11 @@ export const ProjectSlider = () => {
             </Card.Section>
 
             <Stack align="center" mt="md" mb="xs" gap="4px">
-              <Text size="sm" fw={500} className={classes.projectTitle}>
-                {project.name}
-              </Text>
+              {project.name.map((name) => (
+                <Text size="sm" fw={500} className={classes.projectTitle}>
+                  {name}
+                </Text>
+              ))}
               {/* {project.currentlyWorking && <Badge color="green">Current</Badge>} */}
               <Anchor
                 size="xs"

@@ -12,6 +12,7 @@ import {
   ActionIcon,
   Flex,
   Image,
+  Text,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { ReactNode, useContext, useEffect, useMemo, useRef, useState } from 'react';
@@ -34,25 +35,31 @@ const mouseDownIconSources: { [key in 'light' | 'dark' | 'auto']?: any } = {
 export type PageTemplateProps = {
   children?: ReactNode;
   titleSection: ReactNode;
-  heightLimit: number;
+  effectiveImageHeighPercentage: number;
   imageRoute: string;
   imageMaximumWidth?: string;
   blackMode?: boolean;
   primaryColor?: PrimaryColors;
+  darkModeImageBrightness?: number;
 };
 
 export function PageTemplate({
   children,
   titleSection,
-  heightLimit,
+  effectiveImageHeighPercentage,
   imageRoute,
   imageMaximumWidth,
   blackMode,
   primaryColor = 'highViolet',
+  darkModeImageBrightness,
 }: PageTemplateProps) {
   const { setColorScheme, colorScheme } = useMantineColorScheme();
 
-  const [pageHeight, setPageHeight] = useState(window.innerHeight);
+  const [isLoading, setLoading] = useState(true);
+  const [pageSize, setPageSize] = useState({
+    height: window.innerHeight,
+    width: window.innerWidth,
+  });
   const [previouslyDark, setPreviouslyDark] = useState(false);
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
   const [modalOpened, { open: openModal, close: closeModal }] = useDisclosure(false);
@@ -65,17 +72,33 @@ export function PageTemplate({
       if (colorScheme === 'dark') setPreviouslyDark(true);
       setColorScheme('dark');
     }
-    window.addEventListener('resize', () => setPageHeight(window.innerHeight));
+    window.addEventListener('resize', () =>
+      setPageSize({ height: window.innerHeight, width: window.innerWidth })
+    );
 
     return () => {
-      window.removeEventListener('resize', () => setPageHeight(window.innerHeight));
+      window.removeEventListener('resize', () =>
+        setPageSize({ height: window.innerHeight, width: window.innerWidth })
+      );
     };
   }, []);
 
-  const imageBottom = useMemo(
-    () => (heightLimit && pageHeight <= heightLimit ? `${pageHeight - heightLimit}px` : '0px'),
-    [pageHeight]
-  );
+  const imageRef = useRef<HTMLImageElement>(null);
+  const [titleToBottomDistance, setTitleToBottomDistance] = useState<number | undefined>();
+  const setTitleRef = (ref: HTMLDivElement) => {
+    if (ref) setTitleToBottomDistance(ref.getBoundingClientRect().bottom);
+  };
+
+  const imageBottom = useMemo(() => {
+    if (titleToBottomDistance && imageRef.current) {
+      const maxImageEffectiveHeight = pageSize.height - titleToBottomDistance;
+      const imageEffectiveHeight = imageRef.current.clientHeight * effectiveImageHeighPercentage;
+      return imageEffectiveHeight > maxImageEffectiveHeight
+        ? `${maxImageEffectiveHeight - imageEffectiveHeight}px`
+        : '0px';
+    }
+    return '0px';
+  }, [pageSize, imageRef.current, titleToBottomDistance, isLoading]);
 
   const pageContentRef = useRef<HTMLDivElement>(null);
 
@@ -153,25 +176,39 @@ export function PageTemplate({
           </Drawer>
         </Box>
         <ContactModal opened={modalOpened} onClose={closeModal} />
-        <Flex direction="column" className={classes.div} style={{ zIndex: 2 }}>
-          {titleSection}
-          {children && (
-            <div className={classes.glitchWrapper}>
-              <ActionIcon
-                mt="10dvh"
-                className={classes.glitch}
-                variant="transparent"
-                size="2.5em"
-                onClick={() => pageContentRef.current?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                <Avatar src={mouseDownIconSources?.[colorScheme]} size="2em" />
-              </ActionIcon>
+        <Flex direction="column" align="center" style={{ zIndex: 2 }}>
+          {isLoading ? (
+            <div className={classes['typing-wrapper']}>
+              <Text className={classes['typing-text']} size="sm">
+                Loading...
+              </Text>
             </div>
+          ) : (
+            <>
+              <Flex direction="column" align="center" ref={setTitleRef} style={{ zIndex: 2 }}>
+                {titleSection}
+              </Flex>
+              {children && (
+                <div className={classes.glitchWrapper}>
+                  <ActionIcon
+                    mt="sm"
+                    className={classes.glitch}
+                    variant="transparent"
+                    size="2.5em"
+                    onClick={() => pageContentRef.current?.scrollIntoView({ behavior: 'smooth' })}
+                  >
+                    <Avatar src={mouseDownIconSources?.[colorScheme]} size="2em" />
+                  </ActionIcon>
+                </div>
+              )}
+            </>
           )}
         </Flex>
         <Image
           src={imageRoute}
           maw={imageMaximumWidth}
+          ref={imageRef}
+          onLoad={() => setLoading(false)}
           w="100dvw"
           style={{
             position: 'absolute',
@@ -179,16 +216,21 @@ export function PageTemplate({
             bottom: imageBottom,
             zIndex: 0,
             mixBlendMode: blackMode && colorScheme === 'dark' ? undefined : 'multiply',
-            // filter: 'brightness(150%)',
+            filter:
+              colorScheme === 'dark' && darkModeImageBrightness
+                ? `brightness(${darkModeImageBrightness}%)`
+                : '',
+            visibility: titleToBottomDistance ? 'visible' : 'hidden',
           }}
         />
       </div>
-      {children && (
+      {children && !isLoading && (
         <Flex
           h="100dvh"
           ref={pageContentRef}
           bg={blackMode ? 'black' : 'var(--mantine-color-body)'}
           style={{ zIndex: 3, position: 'relative' }}
+          p="md"
         >
           {children}
         </Flex>

@@ -10,7 +10,7 @@ export const ContactModal = ({ opened, onClose }: ContactModalProps) => (
     <Grid>
       <Grid.Col span={3}>Mail</Grid.Col>
       <Grid.Col span={9}>
-        <Anchor href="mailto:danielgarciaher2@gmail.com">danielgarciaher2@gmail.com</Anchor>
+        <Anchor href="mailto:dani@danigh.dev">dani@danigh.dev</Anchor>
       </Grid.Col>
       <Grid.Col span={3}>LinkedIn</Grid.Col>
       <Grid.Col span={9}>
