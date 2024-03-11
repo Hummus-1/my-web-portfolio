@@ -24,59 +24,59 @@ export function PhotographyPage() {
     >
       <div className={photoClasses.gallery}>
         <figure className={`${photoClasses['gallery__item--1']} ${photoClasses.gallery__img}`}>
-          <GlitchedImage src="/public/static/images/photography/bridge.webp" alt="Bridge" />
+          <GlitchedImage src="/public/static/images/bridge.webp" alt="Bridge" />
         </figure>
         <figure className={`${photoClasses['gallery__item--2']} ${photoClasses.gallery__img}`}>
           <img
-            src="/public/static/images/photography/cave.webp"
+            src="/public/static/images/cave.webp"
             className={photoClasses.gallery__img}
             alt="Cave"
           />
         </figure>
         <figure className={`${photoClasses['gallery__item--3']} ${photoClasses.gallery__img}`}>
-          <GlitchedImage src="/public/static/images/photography/rocks.webp" alt="Rocks" />
+          <GlitchedImage src="/public/static/images/rocks.webp" alt="Rocks" />
         </figure>
         <figure className={`${photoClasses['gallery__item--4']} ${photoClasses.gallery__img}`}>
           <img
-            src="/public/static/images/photography/papagayo.jpg"
+            src="/public/static/images/papagayo.jpg"
             className={photoClasses.gallery__img}
             alt="Swimming in the sea"
           />
         </figure>
         <figure className={`${photoClasses['gallery__item--5']} ${photoClasses.gallery__img}`}>
           <img
-            src="/public/static/images/photography/arc.jpg"
+            src="/public/static/images/arc.jpg"
             className={photoClasses.gallery__img}
             alt="Glendalough Arc"
           />
         </figure>
         <figure className={`${photoClasses['gallery__item--6']} ${photoClasses.gallery__img}`}>
-          <GlitchedImage src="/public/static/images/photography/statue.webp" alt="Kassel Statue" />
+          <GlitchedImage src="/public/static/images/statue.webp" alt="Kassel Statue" />
         </figure>
         <figure className={`${photoClasses['gallery__item--7']} ${photoClasses.gallery__img}`}>
           <img
-            src="/public/static/images/photography/dogman.webp"
+            src="/public/static/images/dogman.webp"
             className={photoClasses.gallery__img}
             alt="A man and a dog"
           />
         </figure>
         <figure className={`${photoClasses['gallery__item--8']} ${photoClasses.gallery__img}`}>
           <img
-            src="/public/static/images/photography/family-forest.webp"
+            src="/public/static/images/family-forest.webp"
             className={photoClasses.gallery__img}
             alt="Family in a forest"
           />
         </figure>
         <figure className={`${photoClasses['gallery__item--9']} ${photoClasses.gallery__img}`}>
           <img
-            src="/public/static/images/photography/branches.webp"
+            src="/public/static/images/branches.webp"
             className={photoClasses.gallery__img}
             alt="Branches and tree"
           />
         </figure>
         <figure className={`${photoClasses['gallery__item--10']} ${photoClasses.gallery__img}`}>
           <img
-            src="/public/static/images/photography/black-wood.webp"
+            src="/public/static/images/black-wood.webp"
             className={photoClasses.gallery__img}
             alt="Black wood"
           />
