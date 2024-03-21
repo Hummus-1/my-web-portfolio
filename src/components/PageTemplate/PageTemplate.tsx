@@ -41,6 +41,7 @@ export type PageTemplateProps = {
   blackMode?: boolean;
   primaryColor?: PrimaryColors;
   darkModeImageBrightness?: number;
+  useChildrenMinimumHeigh?: boolean;
 };
 
 export function PageTemplate({
@@ -52,6 +53,7 @@ export function PageTemplate({
   blackMode,
   primaryColor = 'highViolet',
   darkModeImageBrightness,
+  useChildrenMinimumHeigh,
 }: PageTemplateProps) {
   const { setColorScheme, colorScheme } = useMantineColorScheme();
 
@@ -162,7 +164,11 @@ export function PageTemplate({
               <Divider my="sm" />
 
               {routes.map((route) => (
-                <a href={route.path} className={classes.link}>
+                <a
+                  href={route.path}
+                  className={classes.link}
+                  onClick={() => blackMode && !previouslyDark && setColorScheme('light')}
+                >
                   {route.id}
                 </a>
               ))}
@@ -170,7 +176,7 @@ export function PageTemplate({
               <Divider my="sm" />
 
               <Group justify="center" grow pb="xl" px="md">
-                <Button>Contact</Button>
+                <Button onClick={openModal}>Contact</Button>
               </Group>
             </ScrollArea>
           </Drawer>
@@ -226,7 +232,8 @@ export function PageTemplate({
       </div>
       {children && !isLoading && (
         <Flex
-          h="100dvh"
+          h={useChildrenMinimumHeigh ? undefined : '100dvh'}
+          mih={useChildrenMinimumHeigh ? '100dvh' : undefined}
           ref={pageContentRef}
           bg={blackMode ? 'black' : 'var(--mantine-color-body)'}
           style={{ zIndex: 3, position: 'relative' }}

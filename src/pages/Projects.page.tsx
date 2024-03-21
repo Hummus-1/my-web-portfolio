@@ -8,6 +8,7 @@ export function ProjectsPage() {
       effectiveImageHeighPercentage={0.4}
       darkModeImageBrightness={125}
       primaryColor="sheepBrown"
+      useChildrenMinimumHeigh
       imageRoute="/static/images/sheeps.webp"
       titleSection={
         <div data-glitch="Projects" className={classes['glitched-title']}>

@@ -1,4 +1,4 @@
-import { Flex, Group, Text } from '@mantine/core';
+import { Flex, Group, SimpleGrid, Text } from '@mantine/core';
 import { PageTemplate } from '@/components/PageTemplate/PageTemplate';
 import classes from '../components/PageTemplate/PageTemplate.module.css';
 
@@ -13,7 +13,7 @@ export function HomePage() {
       imageMaximumWidth="1800px"
       titleSection={
         <>
-          <Flex gap="3rem">
+          <Flex gap="3rem" className={classes['title-container']}>
             <div data-glitch="Daniel " className={classes['glitched-title']}>
               Daniel
             </div>
@@ -24,10 +24,10 @@ export function HomePage() {
               Hernández
             </div>
           </Flex>
-          <Text style={{ zIndex: 1 }} size="md" fw="400">
+          <Text style={{ zIndex: 1 }} size="md" fw="400" p="xs">
             Software Engineer
           </Text>
-          <Group gap="xs">
+          <Group gap="xs" pl="md" pr="md" align="center" justify="center">
             {skills.map((skill, index) => (
               <>
                 <Text style={{ zIndex: 1 }} size="sm" td="underline">

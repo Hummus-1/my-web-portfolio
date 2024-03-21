@@ -6,8 +6,8 @@ type ContactModalProps = {
 };
 
 export const ContactModal = ({ opened, onClose }: ContactModalProps) => (
-  <Modal opened={opened} onClose={onClose} title="Contact" centered size="lg">
-    <Grid>
+  <Modal opened={opened} onClose={onClose} title="Contact" centered size="lg" zIndex={1000001}>
+    <Grid style={{ zIndex: '10000000000' }}>
       <Grid.Col span={3}>Mail</Grid.Col>
       <Grid.Col span={9}>
         <Anchor href="mailto:dani@danigh.dev">dani@danigh.dev</Anchor>

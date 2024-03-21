@@ -1,4 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono:500');
+.title-container {
+   @media (max-width: $mantine-breakpoint-sm) {
+      flex-direction: column;
+      text-align: center;
+      gap: 0px !important;
+   }
+}
 .header {
   height: rem(60px);
   padding-left: var(--mantine-spacing-md);
@@ -122,11 +129,13 @@
 .glitched-title {
   position: relative;
   color: #fff;
-  font-size: em(90px);
+  /* font-size: em(90px); */
   font-family: 'Roboto Mono', monospace;
   letter-spacing: -7px;
   color: light-dark(black, white);
   z-index: 1;
+  font-size: clamp(4rem, 4vw + 1rem, 10rem);
+
 }
 
 .glitched-title:before {
