@@ -1,4 +1,4 @@
-import { Flex, Group, SimpleGrid, Text } from '@mantine/core';
+import { Flex, Group, Text } from '@mantine/core';
 import { PageTemplate } from '@/components/PageTemplate/PageTemplate';
 import classes from '../components/PageTemplate/PageTemplate.module.css';
 
@@ -7,7 +7,7 @@ const skills = ['React', 'Typescript', 'Javascript', 'Python', 'C++', 'Vue', 'Da
 export function HomePage() {
   return (
     <PageTemplate
-      effectiveImageHeighPercentage={0.77}
+      effectiveImageHeighPercentage={0.82}
       darkModeImageBrightness={150}
       imageRoute="/static/images/corv.jpeg"
       imageMaximumWidth="1800px"
