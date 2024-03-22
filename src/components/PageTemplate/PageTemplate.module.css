@@ -6,6 +6,13 @@
       gap: 0px !important;
    }
 }
+
+.header-container {
+   @media (max-width: $mantine-breakpoint-sm) {
+      padding-bottom: 60px !important;
+   }
+}
+
 .header {
   height: rem(60px);
   padding-left: var(--mantine-spacing-md);

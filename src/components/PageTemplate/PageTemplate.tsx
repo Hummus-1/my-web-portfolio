@@ -114,7 +114,7 @@ export function PageTemplate({
         }}
         className={children ? '' : 'noContent'}
       >
-        <Box pb={120}>
+        <Box pb={120} className={classes['header-container']}>
           <header className={classes.header}>
             <Group justify="space-between" h="100%">
               <Group w="7rem">
